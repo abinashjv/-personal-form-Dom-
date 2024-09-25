@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Information</title>
+    <style>
+        /* Apply a clean font and set background color */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e3f2fd; /* Light blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+          background-color:#cce7ff;
+        }
+
+        .container {
+            background-color: #cce7ff; /* White background for the container */
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            transition: transform 0.3s ease;
+            position: relative;
+            text-align: left;
+        }
+
+        /* Hover effect on the container */
+        .container:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Make labels small, modern, and bold */
+        label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #444; /* Darker text color */
+            margin-bottom: 5px;
+            background-color: #cce7ff; /* Light blue background for labels */
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        /* Input and textarea with subtle shadows and focus effect */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #b0bec5; /* Gray border */
+            border-radius: 8px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            transition: border 0.3s, box-shadow 0.3s;
+            background-color: #f9f9f9; /* Light gray background for inputs */
+        }
+
+        /* Change border color on focus */
+        input:focus,
+        textarea:focus {
+            border-color: #1e88e5; /* Blue border on focus */
+            box-shadow: 0px 0px 5px rgba(30, 136, 229, 0.5);
+            outline: none;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 8px;
+            transform: scale(1.2);
+        }
+
+        /* Button styles */
+        button {
+            padding: 10px 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            width: 130px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Submit button styles */
+        button[type="submit"] {
+            background-color: #4caf50; /* Solid green */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #388e3c; /* Darker green on hover */
+        }
+
+        /* Reset button styles */
+        button[type="reset"] {
+            background-color: #f44336; /* Solid red */
+        }
+
+        button[type="reset"]:hover {
+            background-color: #c62828; /* Darker red on hover */
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 500px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 style="text-align: center; color: #1e88e5;">Personal Information Form</h1>
+        <form>
+            <table>
+                <tr>
+                    <td><label>First Name:</label></td>
+                    <td><input type="text" id="fname" placeholder="Enter your First Name" required></td>
+                </tr>
+                <tr>
+                    <td><label>Last Name:</label></td>
+                    <td><input type="text" id="lname" placeholder="Enter your Last Name" required></td>
+                </tr>
+                <tr>
+                    <td><label>Gender:</label></td>
+                    <td>
+                        <input type="radio" name="gender" id="Male" value="Male" required> Male
+                        <input type="radio" name="gender" id="Female" value="Female" required> Female
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Date of Birth:</label></td>
+                    <td><input type="date" id="dob" required></td>
+                </tr>
+                <tr>
+                    <td><label>Email:</label></td>
+                    <td><input type="email" id="email" required></td>
+                </tr>
+                <tr>
+                    <td><label>Password:</label></td>
+                    <td><input type="password" id="password" required></td>
+                </tr>
+                <tr>
+                    <td><label>Address:</label></td>
+                    <td><textarea id="Address" cols="20" rows="3" required></textarea></td>
+                </tr>
+                <tr>
+                    <td><label>Mobile:</label></td>
+                    <td><input type="text" id="num" required></td>
+                </tr>
+            </table>
+            <label>
+                <input type="checkbox" id="h1" value="Reading"> Reading
+                <input type="checkbox" id="h2" value="Playing Games"> Playing
+                <input type="checkbox" id="h3" value="Driving"> Driving
+                <input type="checkbox" id="h4" value="Football"> Cooking
+            </label>
+            <br><br>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const fname = document.getElementById("fname").value;
+            const lname = document.getElementById("lname").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (fname === "" || lname === "" || email === "" || password === "") {
+                alert("Please fill in all required fields.");
+                return;
+            }
+            alert("Form submitted successfully!");
+            this.submit();
+        });
+    </script>
+
+</body>
+</html>
